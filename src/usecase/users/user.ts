@@ -1,8 +1,9 @@
-import { prismaClient } from "@/lib/config/db.config";
-import type { STATUS } from "@/lib/types";
-import type { AttendeInterface } from "@/models";
-import { Attendee } from "@/models";
-import { Prisma } from "@prisma/client";
+import type { Prisma } from '@prisma/client';
+
+import { prismaClient } from '@/lib/config/db.config';
+import type { STATUS } from '@/lib/types';
+import type { AttendeInterface } from '@/models';
+import { Attendee } from '@/models';
 
 export class UserUsecase {
   async findById(id: string) {
@@ -19,9 +20,16 @@ export class UserUsecase {
     return user;
   }
 
-  async updateUser(id: string, updateUserDto: Prisma.UserUpdateInput) {
+  async updateUser(
+    id: string,
+    updateUserDto: Partial<Prisma.UserUpdateInput>,
+    email?: string,
+  ) {
     const user = await prismaClient.user.update({
-      where: { id },
+      where: {
+        id,
+        email,
+      },
       data: updateUserDto,
     });
     return user;

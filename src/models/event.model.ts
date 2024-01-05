@@ -9,10 +9,15 @@ export interface EventInterface {
 
 export class Event {
   eventId: string;
+
   name: string;
+
   description: string;
+
   date: string;
+
   location: string;
+
   maxAttendes: number;
 
   constructor(eventDto: EventInterface) {

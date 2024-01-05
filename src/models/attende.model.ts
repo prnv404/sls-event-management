@@ -6,7 +6,9 @@ export interface AttendeInterface {
 
 export class Attendee {
   eventId: string;
+
   userId: string;
+
   registrationFee: number;
 
   constructor(attendeeDto: AttendeInterface) {

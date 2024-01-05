@@ -12,8 +12,11 @@ export class User {
   password: string;
 
   email: string;
+
   isVerified?: boolean;
+
   refreshToken?: string;
+
   constructor(userDto: UserInterface) {
     this.username = userDto.username;
     this.password = userDto.password;

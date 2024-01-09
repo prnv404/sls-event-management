@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import type { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
@@ -49,7 +50,7 @@ export const currentUser = async (
           accessToken,
           refreshToken,
         };
-        return res.redirect(req.path)
+        return res.redirect(req.path);
       }
     } else {
       return res.status(401).json({ message: 'not authorized please login' });

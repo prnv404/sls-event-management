@@ -5,7 +5,6 @@
   "scripts": {
     "dev:server": "cross-env NODE_ENV=development NODE_OPTIONS=--dns-result-order=ipv4first sls offline start --stage offline",
     "dev": "run-p dev:*",
-    "deploy:db": "dotenv -e .env.production -c -- tsx scripts/deployDbProd.ts",
     "deploy:app": "cross-env NODE_ENV=production sls deploy --stage prod",
     "deploy-prod": "run-s deploy:*",
     "remove-prod": "cross-env NODE_ENV=production sls remove --stage prod",
@@ -13,11 +12,11 @@
     "lint": "eslint .",
     "format": "eslint --fix . && prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
     "check-types": "tsc --noEmit --pretty",
-    "db:push": "prisma db push",
     "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.6.0",
+    "aws-sdk": "^2.1532.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cookie-session": "^2.0.0",

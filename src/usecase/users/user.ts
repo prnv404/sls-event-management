@@ -1,9 +1,10 @@
-import type { Prisma } from '@prisma/client';
+/* eslint-disable prettier/prettier */
+import type { Prisma } from "@prisma/client";
 
-import { prismaClient } from '@/lib/config/db.config';
-import type { STATUS } from '@/lib/types';
-import type { AttendeInterface } from '@/models';
-import { Attendee } from '@/models';
+import { prismaClient } from "@/lib/config/db.config";
+import type { STATUS } from "@/lib/types";
+import type { AttendeInterface } from "@/models";
+import { Attendee } from "@/models";
 
 export class UserUsecase {
   async findById(id: string) {

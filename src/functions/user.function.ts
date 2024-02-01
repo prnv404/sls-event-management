@@ -6,12 +6,12 @@ import express from "express";
 import { currentUser } from "@/lib/middleware/auth";
 import type { UserInterface } from "@/models";
 import { UserUsecase } from "@/usecase/users/user";
-import { AWS } from "@/services/aws.service";
+// import { AWS } from "@/services/aws.service";
 
 const router: Router = express.Router();
 
 const userUseCase = new UserUsecase();
-const awsService = new AWS();
+// const awsService = new AWS();
 
 router.get("/", currentUser, async (req, res) => {
   const userId = req.user!.id;
@@ -32,20 +32,6 @@ router.delete("/:id", currentUser, async (req, res) => {
   res.status(200).json({ message: "user deleted successfully" });
 });
 
-router.get("/signed-url-upload", async (req, res) => {
-  const key = req.query as {
-    fileName: string;
-    extension: string;
-    mediaType: string;
-  };
-  const url = await awsService.s3GetSignedUrl(key);
-  res.json({ url });
-});
 
-router.get("/signed-url-access", async (req, res) => {
-  const key = req.query.key as string;
-  const url = await awsService.signedUrlAcess(key);
-  res.json({ uploadUrl: url });
-});
 
 export { router as UserRouter };
